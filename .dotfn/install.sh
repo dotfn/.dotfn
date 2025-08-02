@@ -78,6 +78,20 @@ sudo pacman -S \
 	bluetui \
 	wiremix \
 
+# Install AUR helper
+sudo pacman -Syu --needed git base-devel --noconfirm
+# Verifica si yay ya está instalado
+if command -v yay &>/dev/null; then
+    echo "yay ya está instalado."
+else
+    git clone --depth 1 https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm --needed
+    cd ..
+    rm -rf yay
+    echo "yay se ha instalado correctamente de forma desatendida."
+fi
+
 ##Set dotfiles
 git clone --bare https://github.com/dotfn/.dotfn.git $HOME/.dotfiles
 dot stash push
