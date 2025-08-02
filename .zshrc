@@ -125,6 +125,11 @@ alias lssize='eza -la --sort=size'    # ordenar por tamaño
 # Árbol con todo
 alias tree='eza --tree -a --icons'    # reemplazo visual para `tree`
 
+#Crea un archivo y un directorio
+mktouch() {
+  mkdir -p "$(dirname "$1")" && touch "$1"
+}
+
 
 eval "$(starship init zsh)"
 
