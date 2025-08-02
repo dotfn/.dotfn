@@ -23,7 +23,8 @@ sudo pacman -S  \
 	xdg-desktop-portal-gtk \
 	xdg-desktop-portal-hyprland \
 	xdg-user-dirs \
-	hyprpolkitagent 
+	hyprpolkitagent \
+	hyprpaper
 
 ### hyprland ecosystem
 sudo pacman -S hyprsunset
@@ -35,8 +36,9 @@ sudo systemctl disable getty@tty2.service
 # enable autostart hypr polkit
 systemctl --user enable --now hyprpolkitagent.service
 
-# enable sunset
+# enable services
 systemctl --user enable --now hyprsunset.service
+systemctl --user enable --now hyprpaper.service
 
 ###----------------------------
 ### Yazi file explorer
