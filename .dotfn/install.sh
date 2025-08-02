@@ -4,6 +4,9 @@ alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 sudo pacman -Syy
 
+grep -q '^Color' /etc/pacman.conf || sudo sed -i '/^\[options\]/a Color' /etc/pacman.conf
+grep -q '^ILoveCandy' /etc/pacman.conf || sudo sed -i '/^\[options\]/a ILoveCandy' /etc/pacman.conf
+
 ###System 
 sudo pacman -S \
 	git \
@@ -73,6 +76,7 @@ sudo pacman -S \
 	firefox	\
 	mpv \
 	bluetui \
+	wiremix \
 
 ##Set dotfiles
 git clone --bare https://github.com/dotfn/.dotfn.git $HOME/.dotfiles
