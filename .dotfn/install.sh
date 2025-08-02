@@ -1,5 +1,6 @@
 #!/bin/bash
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME' 
 
 sudo pacman -Syy
 
@@ -18,6 +19,7 @@ sudo pacman -S  \
 	ly \
 	uwsm \
 	kitty \
+	rofi \
 	xdg-desktop-portal-gtk \
 	xdg-desktop-portal-hyprland \
 	xdg-user-dirs \
@@ -39,7 +41,7 @@ systemctl --user enable --now hyprsunset.service
 ###----------------------------
 ### Yazi file explorer
 ###----------------------------
-sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick
+sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick udisks2
 
 # Yazi plugins
 ya pkg add yazi-rs/plugins:mount
@@ -69,6 +71,10 @@ sudo pacman -S \
 	firefox	\
 	mpv \
 	bluetui \
+
+##Set dotfiles
+git clone --bare https://github.com/dotfn/.dotfn.git $HOME/.dotfiles
+dot stash push
 
 ##
 chsh -s $(which zsh)
