@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions zsh-history-substring-search)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions zsh-history-substring-search fzf-tab)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -125,11 +125,19 @@ alias lssize='eza -la --sort=size'    # ordenar por tamaño
 # Árbol con todo
 alias tree='eza --tree -a --icons'    # reemplazo visual para `tree`
 
-#Crea un archivo y un directorio
+# 
+alias redson="hyprctl hyprsunset temperature 2500"
+
+
+# Crea un archivo y un directorio
 mktouch() {
   mkdir -p "$(dirname "$1")" && touch "$1"
 }
+#nvim
+n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
 
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 
+eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 

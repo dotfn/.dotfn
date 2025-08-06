@@ -8,16 +8,18 @@ grep -q '^Color' /etc/pacman.conf || sudo sed -i '/^\[options\]/a Color' /etc/pa
 grep -q '^ILoveCandy' /etc/pacman.conf || sudo sed -i '/^\[options\]/a ILoveCandy' /etc/pacman.conf
 
 ###System 
-sudo pacman -S \
+sudo pacman -S --noconfirm\
 	git \
 	wget \
 	eza \
 	zsh \
 	neovim \
 	openssh \
+	zoxide \
+	ttf-cascadia-code-nerd \
 
 ###hyprland base
-sudo pacman -S  \
+sudo pacman -S  -noconfirm\
 	hyprland \
 	ly \
 	uwsm \
@@ -28,9 +30,18 @@ sudo pacman -S  \
 	xdg-user-dirs \
 	hyprpolkitagent \
 	hyprpaper
+	waybar
+
+#tools
+sudo pacman -S cliphist
+
+
+sudo pacman -S dialect libspelling
+##gspell
 
 ### hyprland ecosystem
-sudo pacman -S hyprsunset
+sudo pacman -S --noconfirm hyprsunset
+
 
 # ly config 
 sudo systemctl enable ly.service
@@ -42,14 +53,19 @@ systemctl --user enable --now hyprpolkitagent.service
 # enable services
 systemctl --user enable --now hyprsunset.service
 systemctl --user enable --now hyprpaper.service
+systemctl --user enable --now waybar.service
 
 ###----------------------------
 ### Yazi file explorer
 ###----------------------------
-sudo pacman -S yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick udisks2
+sudo pacman -S --noconfirm yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick udisks2
 
 # Yazi plugins
 ya pkg add yazi-rs/plugins:mount
+
+# Media info 
+sudo pacman -S mediainfo
+ya pkg add boydaihungst/mediainfo
 
 ###----------------------------
 ### oh-my-zsh
@@ -66,17 +82,20 @@ git clone https://github.com/zsh-users/zsh-completions \
 	${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-history-substring-search \
 	${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+git clone https://github.com/Aloxaf/fzf-tab \
+	${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
 #cross-shell prompt
-sudo pacman -S starship
+sudo pacman -S --noconfirm starship
 
 #Apps
-sudo pacman -S \
+sudo pacman -S --noconfirm \
 	ttf-input-nerd \
 	firefox	\
 	mpv \
 	bluetui \
 	wiremix \
+	calcurse \
 
 # Install AUR helper
 sudo pacman -Syu --needed git base-devel --noconfirm
@@ -89,7 +108,6 @@ else
     makepkg -si --noconfirm --needed
     cd ..
     rm -rf yay
-    echo "yay se ha instalado correctamente de forma desatendida."
 fi
 
 ##Set dotfiles
