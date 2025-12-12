@@ -137,7 +137,7 @@ git clone https://github.com/Aloxaf/fzf-tab \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
 alias dot='git --git-dir=$HOME/.dotfn/ --work-tree=$HOME'
-git clone --bare git@github.com:dotfn/.dotfn.git $HOME/.dotfn
+git clone --bare https://github.com/dotfn/.dotfn.git $HOME/.dotfn
 dot stash push
 
 fc-cache -f -v
