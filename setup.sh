@@ -19,6 +19,14 @@ configure_pacman() {
   if ! grep -q 'ILoveCandy' "$PACMAN_CONF"; then
     sudo sed -i '/^ParallelDownloads = 20/a ILoveCandy' "$PACMAN_CONF"
   fi
+
+  sudo grep -qE '^\s*Defaults\s+.*pwfeedback' /etc/sudoers || {
+    sudo grep -q '^Defaults' /etc/sudoers && sudo sed -i '/^Defaults/ a Defaults pwfeedback' /etc/sudoers ||
+      sudo sed -i '1i Defaults pwfeedback' /etc/sudoers
+  }
+
+  sudo visudo -c >/dev/null 2>&1 || sudo sed -i '/^\s*Defaults\s+pwfeedback/d' /etc/sudoers
+
 }
 
 configure_pacman
@@ -85,6 +93,9 @@ sudo pacman -S --needed --noconfirm fzf \
 
 #### BASE INSTALL hyprland PACK
 sudo pacman -S --needed --noconfirm uwsm hyprland kitty rofi firefox git xdg-user-dirs xdg-desktop-portal-hyprland hyprpolkitagent
+
+####
+yay -S --noconfirm --needed brave-bin
 
 ##### SERVICES
 #sudo systemctl enable hyprpolkitagent.service
