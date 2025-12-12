@@ -136,6 +136,12 @@ git clone https://github.com/zsh-users/zsh-history-substring-search \
 git clone https://github.com/Aloxaf/fzf-tab \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
+alias dot='git --git-dir=$HOME/.dotfn/ --work-tree=$HOME'
+git clone --bare git@github.com:dotfn/.dotfn.git $HOME/.dotfn
+dot stash push
+
+fc-cache -f -v
+
 ###---------------------------
 ### INSTALACIÓN DE LUCIDGLYPH
 ###---------------------------
@@ -148,7 +154,3 @@ rm -rf "lucidglyph"
 sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub || echo 'GRUB_TIMEOUT=0' | sudo tee -a /etc/default/grub >/dev/null
 command -v update-grub >/dev/null 2>&1 && sudo update-grub >/dev/null 2>&1
 command -v grub-mkconfig >/dev/null 2>&1 && sudo grub-mkconfig -o /boot/grub/grub.cfg >/dev/null 2>&1
-
-alias dot='git --git-dir=$HOME/.dotfn/ --work-tree=$HOME'
-git clone --bare git@github.com:dotfn/.dotfn.git $HOME/.dotfn
-dot stash push
