@@ -13,7 +13,7 @@ configure_pacman() {
   # Ajustar ParallelDownloads a 20 si no está
   if ! grep -qE '^ParallelDownloads\s*=\s*20' "$PACMAN_CONF"; then
     sudo sed -i 's/^ParallelDownloads\s*=\s*[0-9]\+/ParallelDownloads = 20/' "$PACMAN_CONF"
-	  fi
+  fi
 
   # Agregar ILoveCandy si no está
   if ! grep -q 'ILoveCandy' "$PACMAN_CONF"; then
@@ -56,36 +56,35 @@ fi
 ### BASE
 ###---------------------------
 
-sudo pacman -S --needed --noconfirm\
-	fzf \
-	git \
-	wget \
-	eza \
-	zsh \
-	neovim \
-	wl-clipboard \
-	openssh \
-	fastfetch \
-	zoxide \
-	ttf-cascadia-code-nerd \
-	ttf-ubuntu-nerd  \
-	yt-dlp \
-	ttf-input-nerd \
-	firefox \
-	mpv \
-	starship \
-	inotify-tools \
-	inkscape \
-	libreoffice-fresh \
-	obsidian \
-	gum \
-	hblock \
-	mise \
-	usage \
-	bat
+sudo pacman -S --needed --noconfirm fzf \
+  git \
+  wget \
+  eza \
+  zsh \
+  neovim \
+  wl-clipboard \
+  openssh \
+  fastfetch \
+  zoxide \
+  ttf-cascadia-code-nerd \
+  ttf-ubuntu-nerd \
+  yt-dlp \
+  ttf-input-nerd \
+  firefox \
+  mpv \
+  starship \
+  inotify-tools \
+  inkscape \
+  libreoffice-fresh \
+  obsidian \
+  gum \
+  hblock \
+  mise \
+  usage \
+  bat
 
 #### BASE INSTALL hyprland PACK
-sudo pacman -S --needed --noconfirm uwsm hyprland kitty firefox git xdg-user-dirs xdg-desktop-portal-hyprland hyprpolkitagent
+sudo pacman -S --needed --noconfirm uwsm hyprland kitty rofi firefox git xdg-user-dirs xdg-desktop-portal-hyprland hyprpolkitagent
 
 ##### SERVICES
 #sudo systemctl enable hyprpolkitagent.service
@@ -119,7 +118,6 @@ EOF
 hblock -n 10 -p 1
 chsh -s $(which zsh)
 
-
 ###----------------------------
 ### OH-MY-ZSH
 ###----------------------------
@@ -138,7 +136,6 @@ git clone https://github.com/zsh-users/zsh-history-substring-search \
 git clone https://github.com/Aloxaf/fzf-tab \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
-
 ###---------------------------
 ### INSTALACIÓN DE LUCIDGLYPH
 ###---------------------------
@@ -147,10 +144,7 @@ chmod +x "lucidglyph/lucidglyph.sh"
 sudo "lucidglyph/lucidglyph.sh" install
 rm -rf "lucidglyph"
 
-
-##### GRUB 
+##### GRUB
 sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=0/' /etc/default/grub || echo 'GRUB_TIMEOUT=0' | sudo tee -a /etc/default/grub >/dev/null
 command -v update-grub >/dev/null 2>&1 && sudo update-grub >/dev/null 2>&1
 command -v grub-mkconfig >/dev/null 2>&1 && sudo grub-mkconfig -o /boot/grub/grub.cfg >/dev/null 2>&1
-
-
