@@ -146,10 +146,9 @@ git clone https://github.com/zsh-users/zsh-history-substring-search \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 git clone https://github.com/Aloxaf/fzf-tab \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
-
-alias dot='git --git-dir=$HOME/.dotfn/ --work-tree=$HOME'
+  
 git clone --bare https://github.com/dotfn/.dotfn.git $HOME/.dotfn
-dot stash push
+git --git-dir=$HOME/.dotfn/ --work-tree=$HOME stash push
 
 fc-cache -f -v
 
