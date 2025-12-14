@@ -34,7 +34,7 @@ configure_pacman
 ###---------------------------
 ### FIREWALL - ufw
 ###---------------------------
-sudo pacman -S --noconfirm ufw gufw
+sudo pacman -S --noconfirm ufw
 sudo systemctl enable ufw.service
 
 sudo ufw default deny incoming
