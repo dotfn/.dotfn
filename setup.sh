@@ -90,14 +90,15 @@ install_base_packages() {
         fzf git wget eza zsh neovim wl-clipboard openssh fastfetch \
         zoxide ttf-cascadia-code-nerd ttf-ubuntu-nerd yt-dlp ttf-input-nerd \
         firefox mpv starship inotify-tools inkscape libreoffice-fresh \
-        obsidian gum hblock mise usage bat
+        obsidian gum hblock mise usage bat firefox
 }
 
 install_hyprland_packages() {
     log "Instalando Hyprland y dependencias..."
     run sudo pacman -S --needed --noconfirm \
-        uwsm hyprland kitty rofi firefox git xdg-user-dirs \
-        xdg-desktop-portal-hyprland hyprpolkitagent
+        uwsm hyprland kitty rofi git xdg-user-dirs \
+        xdg-desktop-portal-hyprland hyprpolkitagent \
+        blueman pavucontrol
 
     run yay -S --noconfirm --needed brave-bin
 }
