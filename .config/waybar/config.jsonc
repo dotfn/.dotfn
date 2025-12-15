@@ -78,12 +78,21 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "pavucontrol",
-    "tooltip-format": "Playing at {volume}%",
-    "scroll-step": 5,
     "format-muted": "",
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "scroll-step": 5,
+    "tooltip-format": "Playing at {volume}%",
     "format-icons": {
-      "default": ["", "", ""]
+      "default": [
+        "󰕿",  // muy bajo
+        "󰕿",
+        "󰖀",  // medio
+        "󰖀",
+        "󰕾",  // alto
+        "󰕾",
+        "󰕾"   // muy alto
+      ]
     }
   },
   "group/tray-expander": {
