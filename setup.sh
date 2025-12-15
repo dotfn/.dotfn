@@ -86,7 +86,7 @@ install_yay() {
 #############################
 install_base_packages() {
   log "Instalando paquetes base..."
-  run sudo pacman -S --needed --noconfirm \
+  run sudo devpacman -S --needed --noconfirm \
     fzf git wget eza zsh neovim wl-clipboard openssh fastfetch \
     zoxide ttf-cascadia-code-nerd ttf-ubuntu-nerd yt-dlp ttf-input-nerd \
     firefox mpv starship inotify-tools inkscape libreoffice-fresh \
@@ -98,22 +98,7 @@ install_hyprland_packages() {
   run sudo pacman -S --needed --noconfirm \
     uwsm hyprland kitty rofi git xdg-user-dirs \
     xdg-desktop-portal-hyprland hyprpolkitagent \
-    blueman pavucontrol
-
-  log "Instalando paquetes base..."
-  run sudo pacman -S --needed --noconfirm \
-    fzf git wget eza zsh neovim wl-clipboard openssh fastfetch \
-    zoxide ttf-cascadia-code-nerd ttf-ubuntu-nerd yt-dlp ttf-input-nerd \
-    firefox mpv starship inotify-tools inkscape libreoffice-fresh \
-    obsidian gum hblock mise usage bat firefox
-}
-
-install_hyprland_packages() {
-  log "Instalando Hyprland y dependencias..."
-  run sudo pacman -S --needed --noconfirm \
-    uwsm hyprland kitty rofi git xdg-user-dirs \
-    xdg-desktop-portal-hyprland hyprpolkitagent \
-    blueman pavucontrol waybar
+    blueman pavucontrol hyprpaper waybar
 
   run yay -S --noconfirm --needed brave-bin
 }
