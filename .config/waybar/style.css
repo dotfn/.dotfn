@@ -78,3 +78,7 @@ tooltip {
 #custom-screenrecording-indicator.active {
   color: #a55555;
 }
+
+#pulseaudio.muted {
+  color: #f38ba8;
+}
