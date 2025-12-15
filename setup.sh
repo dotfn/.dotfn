@@ -86,7 +86,7 @@ install_yay() {
 #############################
 install_base_packages() {
   log "Instalando paquetes base..."
-  run sudo devpacman -S --needed --noconfirm \
+  run sudo pacman -S --needed --noconfirm \
     fzf git wget eza zsh neovim wl-clipboard openssh fastfetch \
     zoxide ttf-cascadia-code-nerd ttf-ubuntu-nerd yt-dlp ttf-input-nerd \
     firefox mpv starship inotify-tools inkscape libreoffice-fresh \
