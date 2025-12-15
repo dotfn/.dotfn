@@ -98,7 +98,7 @@ install_hyprland_packages() {
   run sudo pacman -S --needed --noconfirm \
     uwsm hyprland kitty rofi git xdg-user-dirs \
     xdg-desktop-portal-hyprland hyprpolkitagent \
-    blueman pavucontrol hyprpaper waybar
+    blueman pavucontrol hyprpaper waybar hyprsunset
 
   run yay -S --noconfirm --needed brave-bin
 }
