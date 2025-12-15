@@ -90,7 +90,7 @@ install_base_packages() {
     fzf git wget eza zsh neovim wl-clipboard openssh fastfetch \
     zoxide ttf-cascadia-code-nerd ttf-ubuntu-nerd yt-dlp ttf-input-nerd \
     firefox mpv starship inotify-tools inkscape libreoffice-fresh \
-    obsidian gum hblock mise usage bat firefox
+    obsidian gum hblock mise usage bat firefox noto-fonts-emoji 
 }
 
 install_hyprland_packages() {
