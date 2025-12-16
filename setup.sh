@@ -91,7 +91,7 @@ install_base_packages() {
     zoxide ttf-cascadia-code-nerd ttf-ubuntu-nerd yt-dlp ttf-input-nerd \
     firefox mpv starship inotify-tools inkscape libreoffice-fresh \
     obsidian gum hblock mise usage bat firefox noto-fonts-emoji \
-    flatpak
+    flatpak btop
 }
 
 install_hyprland_packages() {
