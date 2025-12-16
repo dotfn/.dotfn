@@ -90,7 +90,8 @@ install_base_packages() {
     fzf git wget eza zsh neovim wl-clipboard openssh fastfetch \
     zoxide ttf-cascadia-code-nerd ttf-ubuntu-nerd yt-dlp ttf-input-nerd \
     firefox mpv starship inotify-tools inkscape libreoffice-fresh \
-    obsidian gum hblock mise usage bat firefox noto-fonts-emoji 
+    obsidian gum hblock mise usage bat firefox noto-fonts-emoji \
+    flatpak
 }
 
 install_hyprland_packages() {
@@ -98,7 +99,8 @@ install_hyprland_packages() {
   run sudo pacman -S --needed --noconfirm \
     uwsm hyprland kitty rofi git xdg-user-dirs \
     xdg-desktop-portal-hyprland hyprpolkitagent \
-    blueman pavucontrol hyprpaper waybar hyprsunset
+    blueman pavucontrol hyprpaper waybar hyprsunset \
+    adw-gtk-theme mako libnotify hyprlock
 
   run yay -S --noconfirm --needed brave-bin
 }
@@ -196,6 +198,8 @@ final_config() {
   run hblock -n 10 -p 1
   run chsh -s $(which zsh)
   run fc-cache -f -v
+  run gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
+  run gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
 
 #############################

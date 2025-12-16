@@ -42,3 +42,9 @@ export MANPAGER="nvim +Man!"
 #-----------------------------------------------------------
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+
+#-----------------------------------------------------------
+# GTK applications
+#-----------------------------------------------------------
+export GTK_APPLICATION_PREFER_DARK_THEME=1
+
