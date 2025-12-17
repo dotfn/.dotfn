@@ -100,7 +100,7 @@ install_hyprland_packages() {
     uwsm hyprland kitty rofi git xdg-user-dirs \
     xdg-desktop-portal-hyprland hyprpolkitagent \
     blueman pavucontrol hyprpaper waybar hyprsunset \
-    adw-gtk-theme mako libnotify hyprlock
+    adw-gtk-theme mako libnotify hyprlock hypridle
 
   run yay -S --noconfirm --needed brave-bin
 }
