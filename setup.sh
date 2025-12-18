@@ -94,27 +94,44 @@ install_base_packages() {
     flatpak btop
 }
 
-install_hyprland_packages() {
-  log "Instalando Hyprland y dependencias..."
+install_kde_packages() {
+  log "Instalando paquetes kde..."
   run sudo pacman -S --needed --noconfirm \
-    uwsm hyprland kitty rofi git xdg-user-dirs \
-    xdg-desktop-portal-hyprland hyprpolkitagent \
-    blueman pavucontrol hyprpaper waybar hyprsunset \
-    adw-gtk-theme mako libnotify hyprlock hypridle
+    gwenview partitionmanager okular spectacle \
+    kdenlive haruna filelight kclock kdeconnect qpwgraph
+}
 
+install_aur_packages() {
+  log "Instalando paquetes AUR..."
+  run yay -S --noconfirm --needed visual-studio-code-bin
   run yay -S --noconfirm --needed brave-bin
 }
 
-#############################
-# SERVICIOS
-#############################
-setup_services() {
-  log "Configurando servicios..."
-  run systemctl --user enable --now hyprpolkitagent.service
-  run sudo pacman -S --needed --noconfirm ly
-  run sudo systemctl enable ly@tty2.service
-  run sudo systemctl disable getty@tty2.service
+install_docker() {
+  log "Instalando Docker..."
+  run sudo pacman -S docker docker-compose docker-buildx --noconfirm
+  run sudo systemctl start docker.service
+  run sudo systemctl enable docker.service
+  run sudo mkdir -p /etc/docker
+
+  # # Crear o sobrescribir el archivo daemon.json
+  # sudo tee /etc/docker/daemon.json > /dev/null <<EOF
+  # {
+  #   "icc": false,
+  #   "userns-remap": "default",
+  #   "no-new-privileges": true,
+  #   "live-restore": true,
+  #   "log-driver": "json-file",
+  #   "log-opts": {
+  #     "max-size": "10m",
+  #     "max-file": "3"
+  #   }
+  # }
+  # EOF
+  run sudo usermod -aG docker $USER
+
 }
+
 
 #############################
 # NVIM
@@ -197,9 +214,6 @@ final_config() {
   log "Ejecutando configuraciones finales..."
   run hblock -n 10 -p 1
   run chsh -s $(which zsh)
-  run fc-cache -f -v
-  run gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
-  run gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
 
 #############################
@@ -210,8 +224,9 @@ main() {
   setup_firewall
   install_yay
   install_base_packages
-  install_hyprland_packages
-  setup_services
+  install_kde_packages
+  install_aur_packages
+  install_docker
   setup_nvim
   setup_file_explorer
   setup_ohmyzsh
