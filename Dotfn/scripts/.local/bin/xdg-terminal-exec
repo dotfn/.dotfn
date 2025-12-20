@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Fail fast
+[ "$#" -gt 0 ] || {
+  echo "Usage: xdg-terminal-exec <cmd>" >&2
+  exit 64
+}
+
+# Minimal sane env
+unset LD_PRELOAD
+unset LD_LIBRARY_PATH
+PATH=${PATH:-/usr/bin:/bin}
+export PATH
+
+# Terminal selection
+if [ -n "$TERMINAL" ] && command -v "$TERMINAL" >/dev/null 2>&1; then
+  exec "$TERMINAL" -e "$@"
+fi
+
+for term in konsole gnome-terminal xfce4-terminal xterm; do
+  command -v "$term" >/dev/null 2>&1 && exec "$term" -e "$@"
+done
+
+echo "xdg-terminal-exec: no terminal emulator found" >&2
+exit 127
