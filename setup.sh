@@ -180,8 +180,8 @@ setup_ohmyzsh() {
   run git clone https://github.com/Aloxaf/fzf-tab \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 
-  run git clone --bare https://github.com/dotfn/.dotfn.git $HOME/.dotfn
-  run git --git-dir=$HOME/.dotfn/ --work-tree=$HOME stash push
+  run git clone --bare https://github.com/dotfn/.dotfn.git $HOME/.dotfiles
+  run git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME stash push
 }
 
 #############################
