@@ -14,14 +14,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# ── PNM ───────────────────────────────────────────────
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-# ── fnm (Node version manager) ───────────────────────────────────────────────
-export FNM_PATH="$HOME/.local/share/fnm"
-export PATH="$FNM_PATH:$PATH"
-eval "$(fnm env --use-on-cd --shell zsh)"
 
 # ── zoxide ────────────────────────────────────────────────────────────────────
 eval "$(zoxide init zsh)"

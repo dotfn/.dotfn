@@ -75,7 +75,7 @@ RUN git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions \
         "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fzf-tab"
 
 # ── .zshrc ────────────────────────────────────────────────────────────────────
-COPY --chown=$USERNAME:$USERNAME .zshrc /home/$USERNAME/.zshrc
+COPY --chown=$USERNAME:$USERNAME /linux/.zshrc /home/$USERNAME/.zshrc
 
 # ── Git: config base ──────────────────────────────────────────────────────────
 RUN git config --global init.defaultBranch main \
