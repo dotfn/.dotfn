@@ -52,9 +52,10 @@ RUN fnm install --lts && fnm default lts-latest
 
 ENV PNPM_HOME="/home/dev/.local/share/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN fnm exec --using=lts-latest -- npm install -g pnpm \
-    && fnm exec --using=lts-latest -- pnpm config set global-bin-dir /home/dev/.local/share/pnpm
-    
+
+RUN wget -qO- https://get.pnpm.io/install.sh \
+    | ENV="$HOME/.zshrc" SHELL="$(which zsh)" zsh -
+        
 # ── opencode ─────────────────────────────────────────────────────────────────
 RUN fnm exec --using=lts-latest -- pnpm install -g opencode-ai
 
