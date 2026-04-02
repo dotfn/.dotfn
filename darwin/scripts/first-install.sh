@@ -13,6 +13,8 @@ brew install --cask visual-studio-code
 brew install fastfetch
 brew install gum
 brew install hblock
+brew install stats
+brew install --cask productdevbook/tap/portkiller
 hblock -n 10 -p 1
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
