@@ -1,0 +1,29 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER_UID: 1000
+        USER_GID: 1000
+    image: dotfn:latest
+    container_name: dev-box
+    hostname: dev-box
+
+    volumes:
+      - ${PROJECTS_PATH:-../}:/workspace    # tus proyectos
+
+    env_file:
+      - .env
+
+    stdin_open: true
+    tty: true
+
+    ports:
+       - "3000:3000"   
+
+    restart: unless-stopped
+
+volumes:
+  dev-home:
+    name: dev-home

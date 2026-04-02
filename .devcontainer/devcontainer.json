@@ -1,0 +1,50 @@
+{
+  "name": "dotfn-workspace",
+  "image": "dotfn:latest",
+
+  // Workspace: VS Code monta la carpeta del proyecto aquí adentro
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+
+  // Extensiones que se instalan automáticamente en el contenedor
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "streetsidesoftware.code-spell-checker"
+        // Agregá las que uses
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": { "path": "/usr/bin/zsh" }
+        },
+        "editor.formatOnSave": true
+      }
+    }
+  },
+
+  // Puertos que VS Code forwarda automáticamente al host
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "Dev server" }
+  },
+
+  // Variables de entorno disponibles en el contenedor
+  // (las secretas ponelas en ~/.devcontainer.env, no acá)
+  "remoteEnv": {
+    "NODE_ENV": "development"
+  },
+
+  // Montá tu gitconfig del host para no reconfigurar git
+  "mounts": [
+    "source=${localEnv:HOME}/.gitconfig,target=/home/dev/.gitconfig,type=bind,readonly"
+  ],
+
+  // Usuario dentro del contenedor (el que creamos en el Dockerfile)
+  "remoteUser": "dev"
+}
